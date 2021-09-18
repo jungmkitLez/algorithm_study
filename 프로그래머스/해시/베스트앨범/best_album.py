@@ -26,17 +26,23 @@ def solution(genres, plays):
     for k,v in genres_id_play.items():
         genres_id_play[k] = sorted(v,key=lambda x : x[1],reverse=True)
 
+    print(genres_ordered)
+
     # 만든 해시를 이용해서 정답을 구함
     for a,b in genres_ordered:
-        for i in range(2):
-            answer.append(genres_id_play[a][i][0])
+
+        if len(genres_id_play[a]) == 1:
+            answer.append(genres_id_play[a][0][0])
+        else:
+            for i in range(2):
+                answer.append(genres_id_play[a][i][0])
 
     return answer
 
 
 
 
-genres = ["classic", "pop", "classic", "classic", "pop"]
-plays = [500, 600, 150, 800, 2500]
+genres = ["classic"]
+plays = [500]
 
 print(solution(genres, plays))
